@@ -1,0 +1,21 @@
+server:
+  port: 8000
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: test
+logging:
+  level:
+    root: INFO
+    org.springframework: INFO
+    org.springframework.web: DEBUG
+    org.springframework.security: TRACE
+    org.hibernate:
+      SQL: DEBUG
+      stat: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    jdbc: INFO
+    jdbc.sqltiming: DEBUG
+    jdbc.resultsettable: DEBUG

@@ -1,0 +1,6 @@
+rootProject.name = 'biggwang'
+
+include 'biggwang-monitor'
+include 'biggwang-reactive'
+include 'domain'
+
