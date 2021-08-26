@@ -37,13 +37,16 @@ subprojects {
         developmentOnly 'org.springframework.boot:spring-boot-devtools'
         annotationProcessor 'org.projectlombok:lombok'
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        implementation 'org.springframework.boot:spring-boot-starter-actuator'
+        implementation 'de.codecentric:spring-boot-admin-starter-client:2.5.1'
     }
 }
 
 // 특정 모듈에만 필요한 라이브러리
 project(':biggwang-monitor') {
     dependencies {
-        implementation 'de.codecentric:spring-boot-admin-starter-server'
+        implementation 'de.codecentric:spring-boot-admin-starter-server:2.5.1'
+        implementation 'de.codecentric:spring-boot-admin-server-ui:2.5.1'
     }
 }
 

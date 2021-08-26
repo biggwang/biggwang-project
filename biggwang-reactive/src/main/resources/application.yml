@@ -1,11 +1,26 @@
 server:
   port: 8000
 spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:9000
+        auto-registration: true
   data:
     mongodb:
       host: localhost
       port: 27017
       database: test
+
+management:
+    endpoints:
+      web:
+        exposure:
+          include: "*"
+    endpoint:
+      health:
+        show-details: always
+
 logging:
   level:
     root: INFO
