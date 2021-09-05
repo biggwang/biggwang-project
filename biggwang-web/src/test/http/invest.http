@@ -1,0 +1,8 @@
+POST localhost:1000/investment
+Content-Type: application/json;charset=UTF-8
+X-USER-ID: 1234567890
+
+{
+  "productId": 1,
+  "investmentAmount": "1000"
+}
