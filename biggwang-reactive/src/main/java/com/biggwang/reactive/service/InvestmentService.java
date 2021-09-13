@@ -9,6 +9,8 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -17,7 +19,8 @@ public class InvestmentService {
     private final InvestmentRepository investmentRepository;
 
     public Flux<InvestmentEntity> getInvestmentList() {
-        return investmentRepository.findAll();
+        Flux<InvestmentEntity> result = investmentRepository.findAll();
+        return result;
     }
 
     public Mono<InvestmentEntity> invest(String userId) {
@@ -38,4 +41,8 @@ public class InvestmentService {
         );
     }
 
+    public Flux<InvestmentEntity> update(Flux<InvestmentEntity> investmentDtoList) {
+        Flux<InvestmentEntity> result = investmentRepository.saveAll(investmentDtoList);
+        return result;
+    }
 }
