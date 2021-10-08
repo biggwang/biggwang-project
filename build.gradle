@@ -58,10 +58,17 @@ project(':biggwang-web') {
         implementation 'org.springframework.boot:spring-boot-starter-validation'
         implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
         implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+        implementation group: 'org.springframework.kafka', name: 'spring-kafka', version: '2.5.10.RELEASE'
+        implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
     }
 }
 
 project(':biggwang-consumer') {
+    dependencies {
+        implementation 'org.slf4j:slf4j-simple:1.7.30'
+        implementation 'org.apache.kafka:kafka-clients:2.5.0'
+        implementation 'org.apache.hadoop:hadoop-client:3.3.0'
+    }
 }
 
 project(':biggwang-monitor') {
