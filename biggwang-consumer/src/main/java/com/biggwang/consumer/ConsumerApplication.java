@@ -17,7 +17,7 @@ public class ConsumerApplication {
 
     private final static Logger logger = LoggerFactory.getLogger(ConsumerApplication.class);
 
-    private final static String BOOTSTRAP_SERVERS = "3.35.17.213:9092";
+    private final static String BOOTSTRAP_SERVERS = "54.180.92.146:9092";
     private final static String TOPIC_NAME = "select-color";
     private final static String GROUP_ID = "color-hdfs-save-consumer-group";
     private final static int CONSUMER_COUNT = 2;

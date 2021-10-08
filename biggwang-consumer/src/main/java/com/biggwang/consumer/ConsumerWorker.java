@@ -26,6 +26,7 @@ public class ConsumerWorker implements Runnable {
     private String topic;
     private String threadName;
     private KafkaConsumer<String, String> consumer;
+    private final String hadoopUrl = "hdfs://localhost:9000";
 
     public ConsumerWorker(Properties prop, String topic, int number) {
         logger.info("Generate ConsumerWorker");
@@ -83,7 +84,7 @@ public class ConsumerWorker implements Runnable {
             try {
                 String fileName = "/data/color-" + partitionNo + "-" + currentFileOffset.get(partitionNo) + ".log";
                 Configuration configuration = new Configuration();
-                configuration.set("fs.defaultFS", "hdfs://localhost:9000");
+                configuration.set("fs.defaultFS", hadoopUrl);
                 FileSystem hdfsFileSystem = FileSystem.get(configuration);
                 FSDataOutputStream fileOutputStream = hdfsFileSystem.create(new Path(fileName));
                 fileOutputStream.writeBytes(StringUtils.join(bufferString.get(partitionNo), "\n"));
