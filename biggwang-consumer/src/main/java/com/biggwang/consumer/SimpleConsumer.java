@@ -14,13 +14,24 @@ public class SimpleConsumer {
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
-    @KafkaListener(topics = "test5", groupId = "rc-group-01")
-    public void raceCondition01(List<String> messages) throws JsonProcessingException {
-        log.warn("##################### received message:{}!", messages);
+    @KafkaListener(topics = "test1", groupId = "group-1")
+    public void raceCondition01(List<String> messages) {
         messages.forEach(item -> {
             try {
                 MessageVO messageVO =  objectMapper.readValue(item, MessageVO.class);
                 log.warn("##################### messageVO:{}!", messageVO.toString());
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    @KafkaListener(topics = "test1", groupId = "group-3")
+    public void raceCondition03(List<String> messages) {
+        messages.forEach(item -> {
+            try {
+                MessageVO messageVO =  objectMapper.readValue(item, MessageVO.class);
+                log.warn("##################### messageVO by group3:{}!", messageVO.toString());
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
             }

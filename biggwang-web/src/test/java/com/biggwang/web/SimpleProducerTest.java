@@ -2,10 +2,7 @@ package com.biggwang.web;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.Test;
@@ -22,15 +19,16 @@ public class SimpleProducerTest {
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
     private ObjectMapper objectMapper = new ObjectMapper();
-    private final String topic = "test5";
+    private final String topic = "test1";
 
     @Test
-    void sendMessage1() throws JsonProcessingException {
-        IntStream.rangeClosed(1, 10).boxed().forEach(item -> {
+    void sendMessage1() {
+        IntStream.rangeClosed(1, 10).boxed().parallel().forEach(item -> {
             String objString = null;
             try {
                 MessageVO messageVO = new MessageVO();
-                messageVO.setKey(UUID.randomUUID().toString());
+                //messageVO.setKey(UUID.randomUUID().toString());
+                messageVO.setKey(item.toString());
                 messageVO.setName(RandomStringUtils.randomAlphabetic(5));
                 messageVO.setAge(34);
                 messageVO.setCity("광명");
@@ -40,7 +38,6 @@ public class SimpleProducerTest {
             }
             kafkaTemplate.send(topic, objString);
         });
-
     }
 
     @Getter

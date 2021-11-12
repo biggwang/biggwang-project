@@ -64,6 +64,9 @@ project(':biggwang-web') {
 }
 
 project(':biggwang-consumer') {
+    jar {
+        archiveBaseName = 'biggwang-consumer.jar'
+    }
     dependencies {
         implementation group: 'org.springframework.kafka', name: 'spring-kafka', version: '2.5.10.RELEASE'
     }
