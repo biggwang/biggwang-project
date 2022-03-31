@@ -1,36 +1,10 @@
 server:
   port: 7000
+  tomcat:
+    threads:
+      max: 1
 spring:
-  boot:
-    admin:
-      client:
-        url: http://localhost:9000
-        auto-registration: true
-  data:
-    mongodb:
-      host: localhost
-      port: 27017
-      database: test
-
-management:
-    endpoints:
-      web:
-        exposure:
-          include: "*"
-    endpoint:
-      health:
-        show-details: always
-
-logging:
-  level:
-    root: INFO
-    org.springframework: INFO
-    org.springframework.web: DEBUG
-    org.springframework.security: TRACE
-    org.hibernate:
-      SQL: DEBUG
-      stat: DEBUG
-    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
-    jdbc: INFO
-    jdbc.sqltiming: DEBUG
-    jdbc.resultsettable: DEBUG
+  task:
+    execution:
+      pool:
+        core-size: 100
