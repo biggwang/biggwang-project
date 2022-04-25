@@ -7,19 +7,5 @@ spring:
       acks: 1
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
-
 server:
   port: 7100
-logging:
-  level:
-    root: INFO
-#    org.springframework: INFO
-#    org.springframework.web: DEBUG
-#    org.springframework.security: TRACE
-#    org.hibernate:
-#      SQL: DEBUG
-#      stat: DEBUG
-#    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
-#    jdbc: INFO
-#    jdbc.sqltiming: DEBUG
-#    jdbc.resultsettable: DEBUG
